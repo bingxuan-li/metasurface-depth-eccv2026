@@ -1,0 +1,12 @@
+include README.md CITATION.cff CONTRIBUTING.md SECURITY.md THIRD_PARTY_NOTICES.md
+recursive-include docs *.md *.json *.txt
+recursive-include configs *.json
+recursive-include examples *.py
+recursive-include tests *.py
+recursive-include tools *.py
+include checkpoints/README.md checkpoints/manifest.json
+recursive-include licenses *.txt
+recursive-include src/metasurface_depth/assets *.pt *.json
+global-exclude *.pyc
+prune runs
+prune data

@@ -1,0 +1,13 @@
+{
+  "model": "base", "steps": 80000, "warmup_steps": 1000, "batch_size": 8,
+  "crop_size": 518, "selection_metric": "original", "selection_dataset": 2,
+  "train": [
+    {"manifest": "../data/hypersim_train.csv", "weight": 0.95, "augment": true},
+    {"manifest": "../data/real_train.csv", "weight": 0.05, "augment": false}
+  ],
+  "validation": [
+    {"manifest": "../data/hypersim_val.csv"},
+    {"manifest": "../data/mit_val.csv"},
+    {"manifest": "../data/real_val.csv"}
+  ]
+}

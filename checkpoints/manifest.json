@@ -1,0 +1,68 @@
+{
+  "small": {
+    "filename": "small.pth",
+    "bytes": 101940169,
+    "sha256": "c1883f967cee137dbaaf92e9f69e1519dd1ad7ec60299b7ca7870a04ae7ab005",
+    "config": {
+      "variant": "small",
+      "encoder": "vits",
+      "depth_range_m": [
+        0.2,
+        1.2
+      ],
+      "input_channels": [
+        "image1",
+        "image2",
+        "mean(image1,image2)"
+      ],
+      "preprocessing": "uint8/255; native resolution; center crop to multiple of 14",
+      "zero_prompt_channels": 3,
+      "output_activation": "identity"
+    },
+    "tensor_count": 283
+  },
+  "base": {
+    "filename": "base.pth",
+    "bytes": 400714057,
+    "sha256": "34a18d511d81baf8a985088f64f6db28eb9ac2642df8f84bdd2be91a99ff27d0",
+    "config": {
+      "variant": "base",
+      "encoder": "vitb",
+      "depth_range_m": [
+        0.2,
+        1.2
+      ],
+      "input_channels": [
+        "image1",
+        "image2",
+        "mean(image1,image2)"
+      ],
+      "preprocessing": "uint8/255; native resolution; center crop to multiple of 14",
+      "zero_prompt_channels": 3,
+      "output_activation": "identity"
+    },
+    "tensor_count": 283
+  },
+  "large": {
+    "filename": "large.pth",
+    "bytes": 1384241785,
+    "sha256": "bc5e2100187ee0ae9d2ac52eb19c85cefd962ead08a8879f6f967262d67b8bb5",
+    "config": {
+      "variant": "large",
+      "encoder": "vitl",
+      "depth_range_m": [
+        0.2,
+        1.2
+      ],
+      "input_channels": [
+        "image1",
+        "image2",
+        "mean(image1,image2)"
+      ],
+      "preprocessing": "uint8/255; native resolution; center crop to multiple of 14",
+      "zero_prompt_channels": 3,
+      "output_activation": "identity"
+    },
+    "tensor_count": 451
+  }
+}

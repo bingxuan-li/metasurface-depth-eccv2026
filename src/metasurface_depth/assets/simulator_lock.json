@@ -1,0 +1,25 @@
+{
+  "label": "eccv-nov2025-v5-ext15",
+  "source_version": "simulator250406_edgemodified/psf_encoder_V5.py working-copy snapshot",
+  "source_repository_head": "249bfd9a6db2007610f22175ee19ec211aef5e46",
+  "includes_uncommitted_scientific_changes": true,
+  "original_source_sha256": {
+    "main.py": "c94773441ad0b1c06f9f71df7c4a5e4d497161d6f90cdd6447b1eaba1f6e97db",
+    "psf_encoder_V5.py": "1dde9fb4b4aebc4061f3907c51436fb5690ec74eede2c60be1b13528423f657a",
+    "occlusion_final.py": "ac98f3169492da14616df9ca1399d953a2f0e00430077149734ddbad76099b51"
+  },
+  "psf_sha256": "6ed9694f916c3c7bc17b709a79a28a002fa4be9395bab0560955928bcfb5a256",
+  "psf_shape": [521, 35, 35],
+  "psf_depth_range_um": [200000, 1500000],
+  "depth_sigma_um": 2500,
+  "input_depth_range_m": [0.2, 1.2],
+  "depth_magnification": 1000000,
+  "extension_pixels": 15,
+  "ifhard": false,
+  "shotnoise": false,
+  "max_memory": 24,
+  "output": "Ordered two uint8 images, clip to [0,255] then truncate; kernel already multiplies by 255",
+  "packaging_changes": ["Relative occlusion import", "Explicit weights_only=True for PSF loading", "Trailing-whitespace cleanup"],
+  "qualification_scope": "Cached-PSF image formation; PSF regeneration is not qualified",
+  "historical_caveat": "Pixel agreement supports this baseline but does not prove an unrecorded historical launch command"
+}

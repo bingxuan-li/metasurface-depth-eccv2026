@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "Please cite the associated paper when using this research."
+type: software
+title: "Physically Grounded Monocular Depth via Nanophotonic Wavefront Encoding"
+version: 0.2.0
+authors:
+  - family-names: Li
+    given-names: Bingxuan
+  - family-names: Wu
+    given-names: Jiahao
+  - family-names: Xu
+    given-names: Yuan
+  - family-names: Zhu
+    given-names: Zezheng
+  - family-names: Zhang
+    given-names: Yunxiang
+  - family-names: Chen
+    given-names: Kenneth
+  - family-names: Liang
+    given-names: Yanqi
+  - family-names: Yu
+    given-names: Nanfang
+  - family-names: Sun
+    given-names: Qi
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2503.15770
+    description: "Associated research paper"
+url: "https://arxiv.org/abs/2503.15770"

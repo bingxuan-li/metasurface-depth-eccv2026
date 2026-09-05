@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metasurface-depth"
+version = "0.2.0"
+description = "RGB-D simulation, training, evaluation and inference for metasurface depth sensing"
+readme = "README.md"
+requires-python = ">=3.10"
+license-files = ["licenses/*", "THIRD_PARTY_NOTICES.md"]
+dependencies = ["torch>=2.7,<3", "numpy>=1.24", "opencv-python-headless>=4.8", "Pillow>=10"]
+
+[project.optional-dependencies]
+simulator = ["scipy>=1.10", "scikit-learn>=1.3", "matplotlib>=3.7", "h5py>=3.9"]
+train = ["scipy>=1.10"]
+dev = ["ruff>=0.9", "build>=1.2"]
+
+[project.scripts]
+metasurface = "metasurface_depth.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+metasurface_depth = ["assets/*.pt", "assets/*.json"]
+
+[tool.ruff]
+line-length = 100
+exclude = ["src/metasurface_depth/_vendor", "src/metasurface_depth/simulator/_kernel.py", "src/metasurface_depth/simulator/_occlusion.py", "src/metasurface_depth/models"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
