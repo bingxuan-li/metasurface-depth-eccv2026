@@ -1,5 +1,9 @@
 # Third-party provenance
 
+- `website/src/components/ui/select.tsx`: retained shadcn/ui select primitive,
+  MIT (Copyright 2023 shadcn). The full notice is preserved in
+  `licenses/SHADCN-MIT.txt`. Installed website dependencies retain their own terms.
+
 - `src/metasurface_depth/_vendor/`: the experiment's DINOv2 implementation,
   originally from Meta. Copyright headers are retained; Apache-2.0 text is in
   `licenses/DINOV2-APACHE-2.0.txt`. Module imports were made package-relative.
