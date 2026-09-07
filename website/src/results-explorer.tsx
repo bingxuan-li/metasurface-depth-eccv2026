@@ -33,7 +33,6 @@ export function PublicResultsGallery() {
   } | null>(null);
   const [error, setError] = useState('');
   const [view, setView] = useState({ yaw: 0, pitch: 0, distance: 0.7 });
-  const [source, setSource] = useState('prediction');
   const [shading, setShading] = useState('input');
   const [showRuler, setShowRuler] = useState(true);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -84,10 +83,9 @@ export function PublicResultsGallery() {
       minY = Infinity,
       maxY = -Infinity;
     for (let i = 0; i < p.length; i += 7) {
-      const z = source === 'gt' ? p[i + 3] : p[i + 2];
-      const ratio = z / p[i + 2];
-      const x = p[i] * ratio,
-        y = p[i + 1] * ratio;
+      const z = p[i + 2];
+      const x = p[i],
+        y = p[i + 1];
       minX = Math.min(minX, x);
       maxX = Math.max(maxX, x);
       minY = Math.min(minY, y);
@@ -242,7 +240,7 @@ export function PublicResultsGallery() {
         height - 24,
       );
     }
-  }, [cloud, scene, view, source, shading, showRuler]);
+  }, [cloud, scene, view, shading, showRuler]);
 
   function rotate(yaw: number, pitch = 0) {
     setView((v) => ({
@@ -343,24 +341,6 @@ export function PublicResultsGallery() {
         <h3 className="cloud-heading">Single-view point cloud</h3>
         <div className="cloud-controls">
           <Select
-            value={source}
-            onValueChange={(value) => {
-              if (value) setSource(value);
-            }}
-          >
-            <SelectTrigger aria-label="Geometry source">
-              <SelectValue>
-                {source === 'prediction'
-                  ? 'Predicted depth'
-                  : 'Depth labels (GT)'}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="prediction">Predicted depth</SelectItem>
-              <SelectItem value="gt">Depth labels (GT)</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select
             value={shading}
             onValueChange={(value) => {
               if (value) setShading(value);
@@ -395,7 +375,7 @@ export function PublicResultsGallery() {
               width={1000}
               height={590}
               style={{ visibility: ready ? 'visible' : 'hidden' }}
-              aria-label={`${source === 'gt' ? 'Depth-label' : 'Predicted'} point cloud of ${current.label}. Depth ruler from 0.2 to 1.2 metres, ticks every 0.1 metre. Use the rotation buttons below or drag to change viewpoint.`}
+              aria-label={`Predicted point cloud of ${current.label}. Depth ruler from 0.2 to 1.2 metres, ticks every 0.1 metre. Use the rotation buttons below or drag to change viewpoint.`}
               onPointerDown={(e) => {
                 drag.current = { x: e.clientX, y: e.clientY };
                 e.currentTarget.setPointerCapture(e.pointerId);
@@ -420,11 +400,7 @@ export function PublicResultsGallery() {
               scene thumbnails.
             </canvas>
             <span className="cloud-source-label">
-              {ready
-                ? source === 'gt'
-                  ? 'GT labels'
-                  : 'Large prediction'
-                : 'Prediction preview'}{' '}
+              {ready ? 'Large prediction' : 'Prediction preview'}{' '}
               · approximate projection
             </span>
           </div>
@@ -525,29 +501,7 @@ export function PublicResultsGallery() {
                 ? 'Drag to rotate, or use the controls.'
                 : 'Loading interactive point cloud…')}
           </output>
-          <figcaption>
-            Point clouds from predicted depth, colored by the model input.
-            Camera intrinsics are approximate; missing surfaces are not filled.
-          </figcaption>
         </figure>
-        <details className="technical-notes">
-          <summary>Rendering and data notes</summary>
-          <p>
-            This gallery contains a subset of the 42 evaluation scenes.{' '}
-            Predictions use the Large mixed-training checkpoint. The depth color
-            scale spans 0.2–1.2 m. Input colors are pseudo-RGB channels formed
-            from the two monochrome captures.
-          </p>
-          <p>
-            29,800 uniformly sampled points per scene, with no GT mask,
-            denoising, or Z exaggeration. X = (u − 797.5)Z / 15666.67; Y = (v −
-            594.5)Z / 15666.67. This nominal projection uses the paper’s 37.6 mm
-            sensor distance and 2.4 μm pitch, assuming a centered crop without
-            resizing. Effective intrinsics after preprocessing are unverified.
-            GT consists of manually annotated object-distance regions, not
-            scanned surfaces.
-          </p>
-        </details>
       </div>
     </section>
   );
