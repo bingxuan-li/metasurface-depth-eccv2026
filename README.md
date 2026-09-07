@@ -16,9 +16,13 @@ Real sensor image pair ───────────────────
 The model sees the encoded image pair, **not ground-truth depth**. Depth is required
 by the simulator and as a training/evaluation label. Real sensor pairs bypass simulation.
 
-> Release candidate: implementation and verification are documented here; public
-> checkpoint hosting and final project licensing approval are still pending.
-> The known paper-metric and test-boundary discrepancies are not hidden.
+[Paper](https://arxiv.org/abs/2503.15770) ·
+[Video](https://www.youtube.com/watch?v=Qkb4nXjKlwU) ·
+[Models](https://huggingface.co/Bingxuan111/metasurface-depth-eccv2026)
+
+The released checkpoints use mixed synthetic/real training. See
+[validation and limitations](docs/VALIDATION.md) for paper-metric and
+test-boundary differences before comparing results.
 
 ## What's included
 
@@ -76,6 +80,11 @@ not convergence or paper-quality accuracy. A successful run writes `SUCCESS.json
 Commands refuse to reuse existing output directories; choose a new run name.
 
 ## Use your own data
+
+The real captured release is prepared separately: **5 training scenes and 42
+evaluation scenes**, each with two encoded inputs and a depth label. See
+[real dataset contents and protocol](docs/REAL_DATASET.md), including the important
+validation/model-selection reuse disclosure. Public hosting is pending.
 
 Create a CSV with `id,rgb,depth` columns; paths are relative to that CSV:
 
@@ -151,4 +160,5 @@ Please cite the paper when using this research. Machine-readable metadata is in
 
 Code and pretrained weights have different provenance and terms. Do not interpret
 this repository as granting unrestricted commercial rights to all three models.
-See [licensing](docs/LICENSING.md); no public release has been made from this staging checkout.
+Original project code is released under [MIT](LICENSE). Third-party code retains
+its original licenses. See [licensing](docs/LICENSING.md) for component and weight terms.

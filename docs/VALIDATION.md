@@ -86,4 +86,14 @@ kernel change was needed.
   passed. Final whitespace cleanup preserved the AST of all 21 vendored/scientific
   modules compared with the GPU-qualified source snapshot.
 - No original experimental repository, training dataset or selected model tensor
-  was changed. No public upload has been performed.
+  was changed during integration.
+
+## Public release preparation (2026-09-07)
+
+The release updates licensing, download links and documentation; scientific
+Python sources are unchanged from the qualified integration above. The local
+credential-pattern scan covers the full release Git history and nonignored
+working files. Syntax compilation and whitespace checks passed. The CPU test
+workflow runs on GitHub; its current status is available in the Actions tab.
+The three public Hugging Face weights preserve the export manifest's sizes
+and SHA-256 hashes. Public availability is not a new paper benchmark.

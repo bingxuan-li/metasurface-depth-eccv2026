@@ -9,12 +9,12 @@
   [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2) repositories
   identify Apache-2.0 source-code licensing; the complete Apache-2.0 text is
   included in `licenses/DINOV2-APACHE-2.0.txt` and also applies to these upstream
-  source components. The local experimental modifications
-  require author approval as part of final publication review.
+  source components. Original project modifications are distributed under the
+  root MIT license without replacing these upstream terms.
 - `src/metasurface_depth/simulator/_kernel.py`, `_occlusion.py`, and the PSF asset:
   frozen from the project's V5 simulator. The existing MIT notice naming Yunxiang
-  is retained verbatim in `licenses/SIMULATOR-MIT.txt`. Public attribution and
-  calibration-resource distribution should be confirmed with the authors.
+  is retained verbatim in `licenses/SIMULATOR-MIT.txt` and covers the frozen
+  simulator and bundled calibration resource.
 - `augmentation.py` extracts only the original sensor-augmentation class. It
   does not import or distribute the old training entry point, telemetry setup,
   credentials, machine-specific paths, scheduler jobs or experiment logs.

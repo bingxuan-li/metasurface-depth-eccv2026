@@ -14,6 +14,6 @@ was exposed, its owner must revoke it in W&B account settings and update any
 dependent private jobs. This release works without W&B and needs no replacement
 key. Never paste old or replacement credentials into issues or chat.
 
-Do not include secrets or private data in public issue reports. Before the public
-repository is launched, report sensitive findings through the authors' existing
+Do not include secrets or private data in public issue reports. Report sensitive
+findings through the authors' existing
 private communication channel. No unverified security-contact address is listed.

@@ -1,4 +1,4 @@
-include README.md CITATION.cff CONTRIBUTING.md SECURITY.md THIRD_PARTY_NOTICES.md
+include LICENSE README.md CITATION.cff CONTRIBUTING.md SECURITY.md THIRD_PARTY_NOTICES.md
 recursive-include docs *.md *.json *.txt
 recursive-include configs *.json
 recursive-include examples *.py
