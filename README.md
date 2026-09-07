@@ -16,6 +16,7 @@ Real sensor image pair ───────────────────
 The model sees the encoded image pair, **not ground-truth depth**. Depth is required
 by the simulator and as a training/evaluation label. Real sensor pairs bypass simulation.
 
+[Project page](https://bingxuan-li.github.io/metasurface-depth-eccv2026/) ·
 [Paper](https://arxiv.org/abs/2503.15770) ·
 [Video](https://www.youtube.com/watch?v=Qkb4nXjKlwU) ·
 [Models](https://huggingface.co/Bingxuan111/metasurface-depth-eccv2026)
@@ -137,6 +138,7 @@ configs/         Small / Base / Large training recipes
 examples/        executable end-to-end smoke workflow
 tests/           CPU contract tests
 docs/            architecture, data, training and validation
+website/         static project page and curated interactive results
 ```
 
 See [architecture](docs/ARCHITECTURE.md), [validation and limitations](docs/VALIDATION.md),
