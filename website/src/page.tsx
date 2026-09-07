@@ -76,9 +76,9 @@ export default function Home() {
               <Layers3 size={17} />
               Models
             </a>
-            <a href="#resources">
+            <a href="https://huggingface.co/datasets/Bingxuan111/metasurface-real-eccv2026" target="_blank" rel="noreferrer">
               <Database size={17} />
-              Dataset (forthcoming)
+              Dataset
             </a>
           </nav>
         </header>
@@ -292,7 +292,9 @@ export default function Home() {
             The release includes the optical simulator, training and inference
             code, and Small, Base, and Large checkpoints. The real-capture
             dataset contains five training scenes and 42 evaluation scenes.
-            Dataset publication is forthcoming.
+            Inputs and depth labels are available under{' '}
+            <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>{' '}
+            for noncommercial use, including academic research.
           </p>
           <details className="technical-notes">
             <summary>Evaluation protocol and limitations</summary>

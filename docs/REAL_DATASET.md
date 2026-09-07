@@ -39,8 +39,12 @@ Retain the synthetic data source and mixture described in [TRAINING.md](TRAINING
 The shared loader handles aligned crops; evaluation images already have dimensions
 divisible by 14. Ground truth is a label, never a neural input.
 
-Publication status: uploaded to
-[private Hugging Face staging](https://huggingface.co/datasets/Bingxuan111/metasurface-real-eccv2026)
-at commit `12480c6`. The remote archive SHA-256 matches the value above, verified
-2026-09-07. Public visibility and final dataset redistribution terms are pending.
-No public dataset license is granted by this preparation document.
+Publication status: publicly available on
+[Hugging Face](https://huggingface.co/datasets/Bingxuan111/metasurface-real-eccv2026)
+under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/), with
+author-approved public noncommercial distribution as of 2026-09-07. Academic
+research is permitted; commercial use is not permitted under this license.
+Provide attribution, link to the license, and identify changes when reusing data.
+The license and dataset card are recorded at commit `da94b86`; the original
+archive bytes and SHA-256 above are unchanged. Code and model weights retain
+their separate licenses.

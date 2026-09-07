@@ -19,7 +19,8 @@ by the simulator and as a training/evaluation label. Real sensor pairs bypass si
 [Project page](https://bingxuan-li.github.io/metasurface-depth-eccv2026/) ·
 [Paper](https://arxiv.org/abs/2503.15770) ·
 [Video](https://www.youtube.com/watch?v=Qkb4nXjKlwU) ·
-[Models](https://huggingface.co/Bingxuan111/metasurface-depth-eccv2026)
+[Models](https://huggingface.co/Bingxuan111/metasurface-depth-eccv2026) ·
+[Dataset](https://huggingface.co/datasets/Bingxuan111/metasurface-real-eccv2026)
 
 The released checkpoints use mixed synthetic/real training. See
 [validation and limitations](docs/VALIDATION.md) for paper-metric and
