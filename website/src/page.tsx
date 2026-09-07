@@ -1,6 +1,7 @@
 import Image from './components/image';
 import { FileText, Code2, Database, Layers3, Play } from 'lucide-react';
 import { PublicResultsGallery } from './results-explorer';
+import { SupplementaryResults } from './supplementary-results';
 
 const authors = [
   ['Bingxuan Li', '*,1'],
@@ -212,20 +213,6 @@ export default function Home() {
           </figure>
         </section>
 
-        <section className="figure-section" id="additional-real-results">
-          <h2>More Real-World Results</h2>
-          <figure className="wide comparison-figure">
-            <a href="./figures/physical-distance-results.png" target="_blank" rel="noreferrer" aria-label="Enlarge additional real-world comparisons">
-              <Image src="./figures/physical-distance-results.png" width={2000} height={1387} loading="lazy"
-                alt="Six real comparisons: four dinosaur views at different distances, fingers, and a perforated panel, with ground truth and depth baselines." />
-            </a>
-            <figcaption>
-              The same object at different distances, followed by fingers and a perforated panel.
-              Depth Anything V2* is fine-tuned; other baselines are aligned to ground truth.
-            </figcaption>
-          </figure>
-        </section>
-
         <section className="figure-section" id="depth-consistency">
           <h2>Depth Consistency</h2>
           <figure className="wide">
@@ -296,6 +283,8 @@ export default function Home() {
             </figcaption>
           </figure>
         </section>
+
+        <SupplementaryResults />
 
         <section className="text-section" id="resources">
           <h2>Code, Models, and Data</h2>

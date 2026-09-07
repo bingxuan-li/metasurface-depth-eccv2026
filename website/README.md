@@ -26,6 +26,7 @@ Video playback uses the paper's YouTube embed.
 ## Content and maintenance
 
 - `src/page.tsx`: paper text, links and figures.
+- `src/supplementary-results.tsx`: polarization, model transfer and PSF analysis.
 - `src/results-explorer.tsx`: read-only gallery and perspective point-cloud viewer.
 - `src/lib/`: capture-anchored camera and depth-tested grid/ruler math.
 - `public/results/manifest.json`: the five author-approved examples, with
@@ -49,14 +50,26 @@ No Overleaf archive, unpublished comments or revision history is distributed.
 | `simulation-more.png` | `qual_sim.pdf`, supplementary simulated comparisons |
 | `simulation-ablation.png` | `supp_qualitative_ablation.png`, depth-prior ablation |
 | `physical-comparison.png` | `qual_phy_2.pdf`, eleven real comparisons |
-| `physical-distance-results.png` | `qual_phy_1.pdf`, six additional real comparisons |
+| `physical-distance-results.png` (not displayed) | `qual_phy_1.pdf`, six additional real comparisons |
 | `depth-consistency.png` | `supp_video.png`, simulation and real motion sequences |
 | `simulator-ablation.png` | `sim_real_gap_new2.pdf`, optical forward-model ablation |
+| `polarization-robustness.png` | `images/rebuttal/heatmap_mae_3d.pdf`, included in the active supplement |
+| `point-source-precision.png` | `images/supp_theory/point_source.pdf` |
+| `edge-orientation.png` | `images/supp_theory/edge_phi.pdf` |
+| `edge-precision.png` | `images/supp_theory/mean_edge.pdf` |
+| `depth-correlation.png` | `images/supp_theory/correlation.pdf` |
 
-The last figure compares optical rendering, not neural depth predictions or new
+The simulator ablation compares optical rendering, not neural depth predictions or new
 measurements. Original comparison figures retain paper results; the interactive
 gallery uses the released Large mixed-training checkpoint. Known evaluation
 and nominal-camera limitations remain visible on the page.
+
+The UniDepth V2 table reproduces only MAE from `tables/supp_generalization.tex`.
+The source's real-data fine-tuned RMSE (0.0096) is below its MAE (0.0348), an
+unresolved inconsistency; no replacement value is inferred or published here.
+These are UniDepth experiments, not benchmarks of the released DAV2 checkpoints.
+PSF analysis uses the supplement's theoretical 1–5 m configuration (50 mm focal
+length, 5 mm aperture), not measured performance of the near-range prototype.
 
 Website code follows the root license. The select primitive was retained from
 shadcn/ui (MIT), using Base UI; package dependencies retain their own licenses.

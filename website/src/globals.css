@@ -461,6 +461,43 @@ summary:focus-visible {
 .comparison-figure {
   margin-top: 2.5rem;
 }
+.polarization-figure {
+  max-width: 720px;
+}
+.text-section > .section-intro {
+  text-align: center;
+}
+.supplementary-table-wrap {
+  overflow-x: auto;
+}
+.supplementary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.supplementary-table caption {
+  caption-side: bottom;
+  margin-top: 1rem;
+  color: #515151;
+  font-size: 0.95rem;
+}
+.supplementary-table th,
+.supplementary-table td {
+  padding: 0.65rem 0.8rem;
+  text-align: right;
+}
+.supplementary-table th:first-child {
+  text-align: left;
+}
+.supplementary-table thead {
+  border-block: 1px solid #777;
+}
+.supplementary-table tbody {
+  border-bottom: 1px solid #777;
+}
+.supplementary-table tbody th {
+  font-weight: 400;
+}
 .simulation-subheading {
   text-align: center;
   margin: 0 0 1.25rem;
