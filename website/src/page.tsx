@@ -102,7 +102,12 @@ export default function Home() {
             />
           </a>
           <figcaption>
-            A birefringent metalens encodes depth in two polarization channels.
+            A single 3-mm metalens records two polarization views in one
+            exposure (a). Depth-dependent shifts between the views provide a
+            physical distance cue; a fine-tuned depth model combines it with
+            learned scene structure to predict distance in metres (c–d).
+            Panel (b) shows the fabricated lens beside a conventional lens and
+            a coin, together with electron-microscope images of its nanopillars.
           </figcaption>
         </figure>
 
@@ -154,8 +159,15 @@ export default function Home() {
               />
             </a>
             <figcaption>
-              Comparisons across four datasets. Baselines are aligned to ground
-              truth in scale and shift; our predictions are unaligned.
+              Each row compares one scene. The split input shows the baseline
+              image (upper left) and our simulated polarization input (lower
+              right), followed by ground truth and depth estimates. Warm colors
+              indicate nearer surfaces; cool colors indicate farther ones.
+              Darker error-map insets mean smaller errors. The cluttered
+              MIT-CGH-4K examples show how physical depth cues help recover
+              object distances when familiar scene context is weak. Baselines
+              receive per-image scale-and-shift alignment to ground truth;
+              our predictions are shown without this correction.
             </figcaption>
           </figure>
           <figure className="wide comparison-figure">
@@ -178,8 +190,13 @@ export default function Home() {
               />
             </a>
             <figcaption>
-              Effect of pretrained depth priors: the full model, training
-              without pretraining, and a U-Net backbone.
+              This ablation tests the contribution of pretrained depth priors.
+              From left to right: simulated input, ground truth, our full model, the same
+              architecture trained from scratch, and a U-Net alternative.
+              Without pretraining, thin structures blur and surfaces lose their
+              shape; the U-Net also introduces boundary and surface artifacts.
+              The full model preserves these details more faithfully, showing
+              the value of combining learned depth priors with optical cues.
             </figcaption>
           </figure>
         </section>
@@ -209,9 +226,16 @@ export default function Home() {
               />
             </a>
             <figcaption>
-              Comparisons on eleven real scenes. Depth Anything V2* is
-              fine-tuned; other baselines are aligned to ground truth. Insets
-              show errors.
+              Eleven scenes captured with the metalens prototype, from single
+              objects to objects at different distances. Compare both the
+              object colors, which encode distance, and their boundaries with
+              the reference labels. Our results preserve the separation between
+              objects and background; darker error-map insets indicate smaller
+              errors. Depth Anything V2* is fine-tuned without our depth
+              encoding. It and our method are shown directly; other baselines
+              receive scale-and-shift alignment to ground truth. Reference
+              labels use measured object distances and manual masks, not dense
+              surface scans.
             </figcaption>
           </figure>
         </section>
@@ -235,9 +259,13 @@ export default function Home() {
               />
             </a>
             <figcaption>
-              Depth predictions as objects move toward the camera. Top:
-              simulated sequence. Bottom: real captures. Each pair of rows shows
-              the input and predicted depth.
+              Columns progress through time: a simulated moving figure is shown
+              in the upper two rows, and a real cat figurine in the lower two.
+              Each input row is followed by predicted depth. As the object
+              approaches, its depth color changes from yellow toward orange
+              and red while the background remains comparatively stable.
+              These sequences illustrate consistent changes in estimated
+              distance under motion.
             </figcaption>
           </figure>
         </section>
@@ -270,7 +298,16 @@ export default function Home() {
               alt="Full pipeline: RGB-D simulation, augmentation, three-channel input adaptation and depth prediction; the lower portion details the optical forward model."
             />
           </a>
-          <figcaption>Training pipeline and optical forward model.</figcaption>
+          <figcaption>
+            The upper path turns RGB images and known depth into simulated
+            polarization pairs. Brightness changes, blur, and noise approximate
+            capture variations; the two views and their average form the
+            three-channel input used to fine-tune Depth Anything V2. The lower
+            path explains how the simulator combines depth layers and fills
+            gaps near object boundaries. This supplies paired training data
+            while reducing artifacts that would otherwise differ from real
+            camera measurements.
+          </figcaption>
         </figure>
 
         <section className="figure-section" id="simulator-results">
@@ -281,8 +318,15 @@ export default function Home() {
                 alt="Linear convolution and our optical forward model, with sphere-boundary and indoor-scene ablations of disocclusion handling." />
             </a>
             <figcaption>
-              Disocclusion handling reduces boundary artifacts in the simulated polarization images.
-              These are optical-rendering comparisons, not depth predictions.
+              A foreground sphere exposes a problem with simple optical
+              rendering: the linear simulator produces bright overlaps and
+              dark gaps at object boundaries, plus sampling fringes on steep
+              surfaces (b–c). Our simulator accounts for foreground–background
+              visibility and fills newly
+              exposed regions, reducing these artifacts (d). The sphere and
+              indoor crops in (e) show what changes when this handling is
+              enabled. This tests the quality of the training images generated
+              by the simulator, not the depth network&apos;s predictions.
             </figcaption>
           </figure>
         </section>

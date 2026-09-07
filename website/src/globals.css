@@ -184,7 +184,7 @@ p {
 figcaption {
   margin: 1rem auto 0;
   font-size: 0.95rem;
-  text-align: center;
+  text-align: left;
   line-height: 1.6;
   color: #515151;
   max-width: 930px;
@@ -208,6 +208,12 @@ figcaption {
   text-align: center;
   margin: -0.4rem 1.5rem 1.5rem;
   color: #555;
+}
+#depth-encoding > .section-intro {
+  max-width: 930px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
 }
 .method-figure {
   margin-top: 1.9rem;
@@ -257,6 +263,7 @@ figcaption {
 .depth-panels figcaption {
   margin: 0.4rem 0 0;
   font-size: 0.875rem;
+  text-align: center;
 }
 .depth-scale {
   display: flex;
@@ -381,6 +388,8 @@ summary:focus-visible {
   margin-top: 1rem;
   color: #515151;
   font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: left;
 }
 .supplementary-table th,
 .supplementary-table td {
