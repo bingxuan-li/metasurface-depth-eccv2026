@@ -10,7 +10,7 @@ import { rotateCloudPoint } from '../src/lib/depth-ruler.ts';
 import { projectedPlane, occludePlane } from '../src/lib/plane-occlusion.ts';
 
 const manifest = JSON.parse(
-  readFileSync(new URL('../public/results/manifest.json', import.meta.url)),
+  readFileSync(new URL('../src/data/real-scenes.json', import.meta.url)),
 );
 let maxDragDelta = 0;
 let worst = 0,

@@ -216,7 +216,6 @@ figcaption {
   white-space: normal;
   font-family: Georgia, 'Times New Roman', serif;
 }
-.scene-picker,
 .cloud-controls,
 .view-controls {
   display: flex;
@@ -226,119 +225,19 @@ figcaption {
   gap: 0.6rem;
   margin: 1rem 0;
 }
-.review-header {
-  max-width: 1110px;
-  margin: 2rem auto 1.5rem;
-  padding: 0 1.5rem;
-}
-.review-header h1 {
-  font-size: 2rem;
-  margin: 1rem 0 0.5rem;
-}
-.review-header p {
-  color: #666;
-}
-.curation-toolbar {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  border-block: 1px solid #ddd;
-}
-.curation-counts {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-.curation-actions,
-.scene-stepper {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 0.8rem 0;
-}
-.curation-actions button,
-.scene-stepper button,
-.selection-empty button {
-  background: #fff;
-  padding: 0.4rem 0.7rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.curation-actions button:disabled,
-.scene-stepper button:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-.curation-toolbar output {
-  display: block;
-  color: #1676a5;
-  font-size: 0.95rem;
-}
-.curation-toolbar p {
-  font-size: 0.85rem;
-  color: #666;
-  margin-top: 0.3rem;
-}
-.scene-decision {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  padding: 0.5rem 1rem;
-  background: #fff;
-  border-block: 1px solid #ddd;
-}
-.scene-stepper {
-  justify-content: center;
-  margin: 0.35rem 0;
-}
-.decision-options {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0;
-}
-.decision-option {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.55rem 0.9rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.95rem;
-}
-.decision-option.is-chosen {
-  background: #edf6fa;
-  border-color: #1676a5;
-}
-.thumbnail-number {
+.scene-name {
   display: block;
   padding-top: 0.3rem;
-  font-size: 0.8rem;
-}
-.selection-empty {
-  text-align: center;
-  margin-block: 3rem;
-}
-.review-page .scene-thumbnails {
-  max-height: 290px;
-  overflow: auto;
-  padding: 0.4rem;
-}
-.scene-select {
-  max-width: min(620px, 85vw);
-  white-space: normal;
-  height: auto;
-  min-height: 2.4rem;
+  font-size: 0.875rem;
 }
 .scene-thumbnails {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.5rem;
   margin: 1.2rem 0;
 }
 .scene-thumbnails button {
+  min-width: 0;
   padding: 3px;
   border: 2px solid transparent;
   cursor: pointer;
@@ -347,7 +246,7 @@ figcaption {
 .scene-thumbnails button[aria-pressed='true'] {
   border-color: #1676a5;
 }
-.scene-thumbnails button:hover {
+.scene-thumbnails button:hover:not([aria-pressed='true']) {
   border-color: #aaa;
 }
 .depth-panels {
@@ -357,7 +256,7 @@ figcaption {
 }
 .depth-panels figcaption {
   margin: 0.4rem 0 0;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 .depth-scale {
   display: flex;
@@ -420,11 +319,13 @@ figcaption {
   pointer-events: none;
 }
 .view-controls button {
+  min-height: 44px;
+  min-width: 44px;
   padding: 0.25rem 0.6rem;
   border: 1px solid #ddd;
   background: white;
   border-radius: 3px;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   cursor: pointer;
 }
 .view-controls button:hover {
@@ -442,13 +343,13 @@ summary:focus-visible {
 .cloud-status {
   display: block;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: #777;
 }
 .technical-notes {
   margin: 1.5rem auto 0;
   max-width: 832px;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: #666;
 }
 .technical-notes summary {
@@ -503,28 +404,6 @@ summary:focus-visible {
   margin: 0 0 1.25rem;
   font-size: 1.35rem;
 }
-.simulation-cloud-thumbnails {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.6rem;
-  margin: 1.1rem 0 1.5rem;
-}
-.simulation-cloud-thumbnails button {
-  background: white;
-  padding: 3px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  min-width: 0;
-}
-.simulation-cloud-thumbnails button[aria-pressed='true'] {
-  border-color: #1676a5;
-}
-.simulation-cloud-thumbnails span {
-  display: block;
-  font-size: 0.8rem;
-  overflow-wrap: anywhere;
-  padding-top: 0.4rem;
-}
 @media (max-width: 700px) {
   .depth-panels {
     grid-template-columns: repeat(2, 1fr);
@@ -533,14 +412,7 @@ summary:focus-visible {
   .scene-thumbnails {
     grid-template-columns: repeat(3, 1fr);
   }
-  .cloud-stage {
-    aspect-ratio: 1.25;
-  }
-  .cloud-stage canvas {
-    object-fit: contain;
-  }
   .cloud-source-label {
-    font-size: 0.65rem;
     left: 0.3rem;
     top: 0.3rem;
   }
@@ -581,7 +453,7 @@ footer {
 }
 footer a {
   display: inline-block;
-  margin-top: 0.3rem;
+  margin: 0.3rem 0.65rem 0;
 }
 .skip-link {
   position: absolute;

@@ -38,7 +38,7 @@ export function SupplementaryResults() {
               alt="Hypersim depth error in centimeters as the degree and angle of linear polarization change." />
           </a>
           <figcaption>
-            Hypersim under partially polarized illumination. Error rises at high
+            Simulated partially polarized scene radiance on Hypersim. Error rises at high
             degrees of polarization, particularly when one channel is strongly attenuated.
           </figcaption>
         </figure>
@@ -69,7 +69,7 @@ export function SupplementaryResults() {
       </section>
 
       <section className="figure-section" id="depth-encoding">
-        <h2>What the PSF Encodes</h2>
+        <h2>PSF Analysis</h2>
         <p className="section-intro">
           Theoretical comparisons over 1–5 m with a 50 mm focal length.
           These use a different optical configuration from the near-range prototype.

@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       <a href="#abstract" className="skip-link">
-        Skip to abstract
+        Skip to overview
       </a>
       <main id="top">
         <header className="paper-header">
@@ -107,10 +107,10 @@ export default function Home() {
         <section className="text-section" id="abstract">
           <h2>Overview</h2>
           <p>
-            We combine a depth-encoding metalens with a pretrained depth model.
-            The metalens produces two images whose relative PSF shifts depend on
-            scene depth. We fine-tune the model on simulated image pairs and
-            five real captures to estimate metric depth from a single shot.
+            A birefringent metalens records two polarization images with
+            depth-dependent point-spread functions (PSFs). We adapt a pretrained
+            depth model to these image pairs and fine-tune it on simulated data
+            and five real captures for single-shot metric depth estimation.
           </p>
         </section>
 
@@ -195,6 +195,7 @@ export default function Home() {
               href="./figures/physical-comparison.png"
               target="_blank"
               rel="noreferrer"
+              aria-label="Enlarge real-world depth comparisons"
             >
               <Image
                 unoptimized
@@ -228,7 +229,7 @@ export default function Home() {
                 width={2191}
                 height={1128}
                 loading="lazy"
-                alt="Six frames of input images and predicted depth: a simulated moving figure above and a real cat moving toward the camera below."
+                alt="Six frames of input images and predicted depth: a simulated moving figure above and physical captures of a cat figurine moving toward the camera below."
               />
             </a>
             <figcaption>
@@ -287,11 +288,14 @@ export default function Home() {
         <SupplementaryResults />
 
         <section className="text-section" id="resources">
-          <h2>Code, Models, and Data</h2>
+          <h2>Resources</h2>
           <p>
-            The release includes the optical simulator, training and inference
-            code, and Small, Base, and Large checkpoints. The real-capture
-            dataset contains five training scenes and 42 evaluation scenes.
+            <a href="https://github.com/bingxuan-li/metasurface-depth-eccv2026">Code</a>{' '}
+            includes the optical simulator, training, and inference.{' '}
+            <a href="https://huggingface.co/Bingxuan111/metasurface-depth-eccv2026">Checkpoints</a>{' '}
+            are available in Small, Base, and Large sizes. The{' '}
+            <a href="https://huggingface.co/datasets/Bingxuan111/metasurface-real-eccv2026">dataset</a>{' '}
+            contains five training scenes and 42 evaluation scenes.
             Inputs and depth labels are available under{' '}
             <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>{' '}
             for noncommercial use, including academic research.

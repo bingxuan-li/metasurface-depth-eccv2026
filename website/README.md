@@ -29,8 +29,9 @@ Video playback uses the paper's YouTube embed.
 - `src/supplementary-results.tsx`: polarization, model transfer and PSF analysis.
 - `src/results-explorer.tsx`: read-only gallery and perspective point-cloud viewer.
 - `src/lib/`: capture-anchored camera and depth-tested grid/ruler math.
-- `public/results/manifest.json`: the five author-approved examples, with
-  descriptive names, checkpoint hashes and projection assumptions.
+- `src/data/real-scenes.json`: the five author-approved examples, with descriptive
+  names, checkpoint hashes and projection assumptions. The build copies this
+  single source to `dist/results/manifest.json` for public provenance.
 - `scripts/check-public.mjs`: checks asset availability and excludes review/API links.
 
 Only Camera, Cat, Dragon, Three objects and Four objects are included. Their

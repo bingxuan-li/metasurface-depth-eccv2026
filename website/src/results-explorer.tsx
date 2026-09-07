@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { depthTicks } from './lib/depth-ruler';
 import { orbitCameraPoint, cameraViewport } from './lib/perspective-camera';
 import { projectedPlane, writePointDepth, occludePlane } from './lib/plane-occlusion';
-import realManifest from '../public/results/manifest.json';
+import realManifest from './data/real-scenes.json';
 
 const palette = [
   [165, 0, 38],
@@ -253,39 +253,7 @@ export function PublicResultsGallery() {
   return (
     <section className="figure-section real-explorer" id="real-scenes">
       <h2>Real Scenes</h2>
-      <p className="section-intro">
-        Large model
-      </p>
       <div className="wide">
-        <div className="scene-picker">
-          <span id="scene-label">Scene</span>
-          <Select
-            value={scene}
-            onValueChange={(value) => {
-              if (value) {
-                setError('');
-                setScene(value);
-                setView({ yaw: 0, pitch: 0, distance: 0.7 });
-              }
-            }}
-          >
-            <SelectTrigger
-              aria-labelledby="scene-label"
-              className="scene-select"
-            >
-              <SelectValue>
-                {current.label}
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              {visibleScenes.map((s) => (
-                <SelectItem key={s.id} value={s.id}>
-                  {s.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
         <div className="scene-thumbnails" aria-label="Featured scenes">
           {visibleScenes.map((s) => (
             <button
@@ -307,7 +275,7 @@ export function PublicResultsGallery() {
                 alt={s.label}
                 loading="lazy"
               />
-              <span className="thumbnail-number">
+              <span className="scene-name">
                 {s.label}
               </span>
             </button>
@@ -338,7 +306,7 @@ export function PublicResultsGallery() {
           <span className="depth-gradient" />
           <span>1.2 m</span>
         </div>
-        <h3 className="cloud-heading">Single-view point cloud</h3>
+        <h3 className="cloud-heading">3D View</h3>
         <div className="cloud-controls">
           <Select
             value={shading}
@@ -393,6 +361,9 @@ export function PublicResultsGallery() {
                 drag.current = null;
               }}
               onPointerCancel={() => {
+                drag.current = null;
+              }}
+              onLostPointerCapture={() => {
                 drag.current = null;
               }}
             >
