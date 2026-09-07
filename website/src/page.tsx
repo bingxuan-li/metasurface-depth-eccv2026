@@ -3,16 +3,16 @@ import { FileText, Code2, Database, Layers3, Play } from 'lucide-react';
 import { PublicResultsGallery } from './results-explorer';
 import { SupplementaryResults } from './supplementary-results';
 
-const authors = [
-  ['Bingxuan Li', '*,1'],
-  ['Jiahao Wu', '*,2'],
-  ['Yuan Xu', '*,2'],
-  ['Zezheng Zhu', '2'],
-  ['Yunxiang Zhang', '1'],
-  ['Kenneth Chen', '1'],
+const authors: Array<[name: string, note: string, homepage?: string]> = [
+  ['Bingxuan Li', '*,1', 'https://bingxuan-li.github.io/'],
+  ['Jiahao Wu', '*,2', 'https://scholar.google.com/citations?user=3RuEnDEAAAAJ&hl=en'],
+  ['Yuan Xu', '*,2', 'https://scholar.google.com/citations?user=BpHBGTkAAAAJ&hl=en'],
+  ['Zezheng Zhu', '2', 'https://zezhengzhu.com/'],
+  ['Yunxiang Zhang', '1', 'https://yunxiangzhang.github.io/'],
+  ['Kenneth Chen', '1', 'https://kenchen10.github.io/'],
   ['Yanqi Liang', '2'],
-  ['Nanfang Yu', '†,2'],
-  ['Qi Sun', '†,1'],
+  ['Nanfang Yu', '†,2', 'https://www.apam.columbia.edu/faculty-staff/directory/nanfang-yu'],
+  ['Qi Sun', '†,1', 'https://qisun.me/'],
 ];
 
 export default function Home() {
@@ -28,9 +28,11 @@ export default function Home() {
             <br className="title-break" /> via Nanophotonic Wavefront Encoding
           </h1>
           <div className="authors">
-            {authors.map(([name, note]) => (
+            {authors.map(([name, note, homepage]) => (
               <span key={name}>
-                {name}
+                {homepage ? (
+                  <a href={homepage} target="_blank" rel="noreferrer">{name}</a>
+                ) : name}
                 <sup>{note}</sup>
               </span>
             ))}

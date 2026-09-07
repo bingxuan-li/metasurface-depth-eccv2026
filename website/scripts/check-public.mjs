@@ -26,6 +26,32 @@ for (const path of walk(root).filter(p => /\.(js|html|json)$/.test(p))) {
 }
 const html = readFileSync(join(root,'index.html'),'utf8');
 assert(html.includes('<h1>') && html.includes('youtube-nocookie.com/embed/Qkb4nXjKlwU'));
+const authorHtml = html.match(/<div class="authors">([\s\S]*?)<\/div>/)?.[1];
+assert(authorHtml, 'Missing author list');
+const expectedAuthors = [
+  ['Bingxuan Li', 'https://bingxuan-li.github.io/'],
+  ['Jiahao Wu', 'https://scholar.google.com/citations?user=3RuEnDEAAAAJ&hl=en'],
+  ['Yuan Xu', 'https://scholar.google.com/citations?user=BpHBGTkAAAAJ&hl=en'],
+  ['Zezheng Zhu', 'https://zezhengzhu.com/'],
+  ['Yunxiang Zhang', 'https://yunxiangzhang.github.io/'],
+  ['Kenneth Chen', 'https://kenchen10.github.io/'],
+  ['Yanqi Liang', null],
+  ['Nanfang Yu', 'https://www.apam.columbia.edu/faculty-staff/directory/nanfang-yu'],
+  ['Qi Sun', 'https://qisun.me/'],
+];
+assert.deepEqual(
+  [...authorHtml.matchAll(/<span>(.*?)<sup>/g)].map(match => match[1].replace(/<[^>]+>/g, '')),
+  expectedAuthors.map(([name]) => name),
+  'Keep the paper author order',
+);
+assert.equal((authorHtml.match(/<sup>/g) || []).length, 9);
+assert.equal((authorHtml.match(/<a /g) || []).length, 8);
+for (const [name, url] of expectedAuthors) {
+  if (url) assert(
+    authorHtml.includes(`<a href="${url.replaceAll('&', '&amp;')}" target="_blank" rel="noreferrer">${name}</a>`),
+    `Missing verified author link: ${name}`,
+  );
+}
 assert(!/\p{Script=Han}/u.test(html), 'Public project page must remain English-only');
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
 assert.equal(new Set(ids).size, ids.length, 'Duplicate page anchor');
@@ -43,4 +69,4 @@ const ratios = [...css.matchAll(/\.cloud-stage\s*\{[^}]*aspect-ratio:\s*([^;]+);
 assert.deepEqual(ratios, ['1000/590'], 'Keep one undistorted canvas ratio at every breakpoint');
 for (const match of html.matchAll(/(?:src|href)="\.\/([^"?#]+)"/g))
   assert(existsSync(join(root,match[1])), `Missing asset: ${match[1]}`);
-console.log('PASS: five selected scenes, manifest parity, assets, anchors, public links, English copy, canvas ratio, no obsolete UI');
+console.log('PASS: five selected scenes, manifest parity, assets, anchors, author and resource links, English copy, canvas ratio, no obsolete UI');
